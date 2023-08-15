@@ -216,13 +216,13 @@ class CreateRecipeSerializer(serializers.ModelSerializer):
         for i in ingredients:
             amount = i['amount']
             if int(amount) < 1:
-                raise serializers.ValidationError({
-                   'amount': 'Количество ингредиента не может быть нулевым.'
-                })
+                raise serializers.ValidationError(
+                    {'amount': 'Количество ингредиента не может быть нулевым.'}
+                    )
             if i['id'] in list:
-                raise serializers.ValidationError({
-                   'ingredient': 'Ингредиент уже есть в рецепте.'
-                })
+                raise serializers.ValidationError(
+                    {'ingredient': 'Ингредиент уже есть в рецепте.'}
+                   )
             list.append(i['id'])
         return data
 
