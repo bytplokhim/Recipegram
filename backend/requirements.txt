@@ -1,0 +1,10 @@
+Django
+django-filter
+djangorestframework
+django-cors-headers
+django-extra-fields
+djoser
+gunicorn
+psycopg2-binary
+Pillow
+python-dotenv
