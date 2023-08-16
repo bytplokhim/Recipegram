@@ -11,7 +11,9 @@ User = get_user_model()
 class Ingredient(models.Model):
     name = models.CharField('Название', max_length=MAX_LENGHTS[2])
     measurement_unit = models.CharField(
-        'Единица измерения', max_length=MAX_LENGHTS[2])
+        'Единица измерения',
+        max_length=MAX_LENGHTS[2]
+    )
 
     class Meta:
         verbose_name = 'Ингредиент'
@@ -105,7 +107,7 @@ class RecipeIngredient(models.Model):
         validators=(
             validators.MinValueValidator(1),
             validators.MaxValueValidator(1000)
-            )
+        )
     )
 
     class Meta:
