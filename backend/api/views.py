@@ -1,4 +1,3 @@
-from django.db.models import Sum
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 from django_filters.rest_framework import DjangoFilterBackend
@@ -13,7 +12,6 @@ from recipes.models import (
     Favorite,
     Ingredient,
     Recipe,
-    RecipeIngredient,
     ShoppingCart,
     Tag
 )
@@ -32,6 +30,7 @@ from .serializers import (
     SubscriptionSerializer,
     TagSerializer
 )
+from .utils import generate_shopping_list
 
 
 class SubscribeView(APIView):
@@ -187,20 +186,8 @@ class ShoppingCartView(APIView):
 
 @api_view(['GET'])
 def download_shopping_cart(request):
-    ingredient_list = "Cписок покупок:"
-    ingredients = RecipeIngredient.objects.filter(
-        recipe__shopping_cart__user=request.user
-    ).values(
-        'ingredient__name', 'ingredient__measurement_unit'
-    ).annotate(amount=Sum('amount'))
-    for num, i in enumerate(ingredients):
-        ingredient_list += (
-            f"\n{i['ingredient__name']} - "
-            f"{i['amount']} {i['ingredient__measurement_unit']}"
-        )
-        if num < ingredients.count() - 1:
-            ingredient_list += ', '
+    ingredient_list = generate_shopping_list(request.user)
     file = 'shopping_list'
-    response = HttpResponse(ingredient_list, 'Content-Type: application/txt')
+    response = HttpResponse(ingredient_list, content_type='text/plain')
     response['Content-Disposition'] = f'attachment; filename="{file}.txt"'
     return response

@@ -2,6 +2,7 @@ Django
 django-filter
 djangorestframework
 django-cors-headers
+django-colorfield
 django-extra-fields
 djoser
 gunicorn
