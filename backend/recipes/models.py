@@ -3,16 +3,16 @@ from django.contrib.auth import get_user_model
 from django.core import validators
 from django.db import models
 
-from foodgram.settings import MAX_LENGHTS
+from foodgram.settings import MAX_LENGHT_RECIPE
 
 User = get_user_model()
 
 
 class Ingredient(models.Model):
-    name = models.CharField('Название', max_length=MAX_LENGHTS[2])
+    name = models.CharField('Название', max_length=MAX_LENGHT_RECIPE)
     measurement_unit = models.CharField(
         'Единица измерения',
-        max_length=MAX_LENGHTS[2]
+        max_length=MAX_LENGHT_RECIPE
     )
 
     class Meta:
@@ -31,9 +31,13 @@ class Ingredient(models.Model):
 
 
 class Tag(models.Model):
-    name = models.CharField('Название', max_length=MAX_LENGHTS[2], unique=True)
+    name = models.CharField(
+        'Название',
+        max_length=MAX_LENGHT_RECIPE,
+        unique=True
+    )
     color = ColorField('Цвет')
-    slug = models.SlugField('Slug', max_length=MAX_LENGHTS[2], unique=True)
+    slug = models.SlugField('Slug', max_length=MAX_LENGHT_RECIPE, unique=True)
 
     class Meta:
         ordering = ('name',)
@@ -57,7 +61,7 @@ class Recipe(models.Model):
         related_name='ingredients',
         through='RecipeIngredient',
     )
-    name = models.CharField('Название', max_length=MAX_LENGHTS[2])
+    name = models.CharField('Название', max_length=MAX_LENGHT_RECIPE)
     image = models.ImageField(
         'Фото',
         upload_to='static/recipe/',

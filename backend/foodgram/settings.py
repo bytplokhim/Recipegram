@@ -135,4 +135,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-MAX_LENGHTS = [254, 150, 200, 7]
+MAX_LENGHT_EMAIL = 254
+MAX_LENGHT_USER = 150
+MAX_LENGHT_RECIPE = 200
