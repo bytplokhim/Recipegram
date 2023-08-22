@@ -7,7 +7,7 @@ def generate_shopping_list(user):
     ingredient_list = "Список покупок:"
 
     ingredients = RecipeIngredient.objects.filter(
-        recipe__shopping_cart__user=user
+        recipe__shoppingcart__user=user
     ).values(
         'ingredient__name', 'ingredient__measurement_unit'
     ).annotate(amount=Sum('amount'))

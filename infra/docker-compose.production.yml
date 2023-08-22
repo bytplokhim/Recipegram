@@ -14,7 +14,7 @@ services:
       - foodgram_data:/var/lib/postgresql/data/
 
   backend:
-    build: ../backend/
+    image: ermeev/foodgram_backend
     volumes:
       - static:/backend_static/
       - media:/app/media/
@@ -23,14 +23,11 @@ services:
       - db
 
   frontend:
-    build:
-      context: ../frontend
-      dockerfile: Dockerfile
+    image: ermeev/foodgram_frontend
     volumes:
       - ../frontend/:/app/result_build/
     depends_on:
       - backend
-
 
   nginx:
     image: nginx:1.19.3

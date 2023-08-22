@@ -286,7 +286,8 @@ class CreateRecipeSerializer(serializers.ModelSerializer):
         self.create_tags(tags, instance)
         instance.name = validated_data.pop('name')
         instance.text = validated_data.pop('text')
-        instance.image = validated_data.pop('image')
+        if validated_data.get('image'):
+            instance.image = validated_data.pop('image')
         instance.cooking_time = validated_data.pop('cooking_time')
         instance.save()
         return instance
