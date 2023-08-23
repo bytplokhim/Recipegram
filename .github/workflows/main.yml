@@ -44,5 +44,5 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           push: true
-          context: ./backend/foodgram/
+          context: ./backend/
           tags: ${{ secrets.DOCKER_USERNAME }}/backend:latest
