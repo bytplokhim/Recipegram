@@ -8,7 +8,8 @@ from recipes.models import (Favorite, Ingredient,
                             Tag,)
 from rest_framework.serializers import (IntegerField, ModelSerializer,
                                         PrimaryKeyRelatedField, ReadOnlyField,
-                                        SerializerMethodField, ValidationError)
+                                        SerializerMethodField,
+                                        ValidationError,)
 from rest_framework.validators import UniqueTogetherValidator
 from users.models import Subscriptions, User
 
