@@ -3,7 +3,7 @@ from django.contrib import admin
 from .models import (Ingredient, Favorite,
                      Recipe, RecipeIngredient,
                      RecipeTag, ShoppingCart,
-                     Tag)
+                     Tag,)
 
 
 class IngredientsInLine(admin.TabularInline):
