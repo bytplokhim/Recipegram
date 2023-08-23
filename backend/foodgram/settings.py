@@ -9,9 +9,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SECRET_KEY = os.getenv('SECRET_KEY', 'secret')
 
-DEBUG = strtobool(os.getenv('DEBUG', 'True'))
+DEBUG = strtobool(os.getenv('DEBUG', 'False'))
 
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '127.0.0.1,localhost').split(',')
+CSRF_TRUSTED_ORIGINS = ['https://foodgr.duckdns.org']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
