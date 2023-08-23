@@ -2,7 +2,7 @@ import re
 
 from djoser.serializers import UserCreateSerializer, UserSerializer
 from drf_extra_fields.fields import Base64ImageField
-from recipes.models import (Ingredient, Favorite,
+from recipes.models import (Favorite, Ingredient,
                             Recipe, RecipeIngredient,
                             RecipeTag, ShoppingCart,
                             Tag,)
