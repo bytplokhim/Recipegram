@@ -142,6 +142,7 @@ class RecipeSerializer(ModelSerializer):
     tags = TagSerializer(many=True)
     author = CustomUserSerializer(read_only=True)
     ingredients = SerializerMethodField()
+    image = ReadOnlyField(source='image.url')
     is_favorited = SerializerMethodField(
         method_name='get_is_favorited')
     is_in_shopping_cart = SerializerMethodField(
