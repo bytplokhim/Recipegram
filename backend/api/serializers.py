@@ -298,6 +298,7 @@ class CreateRecipeSerializer(ModelSerializer):
 
 
 class ShowFavoriteSerializer(ModelSerializer):
+    image = ReadOnlyField(source='image.url')
 
     class Meta:
         model = Recipe
