@@ -88,6 +88,7 @@ class ShowSubscriptionsSerializer(ModelSerializer):
             'recipes',
             'recipes_count'
         ]
+        read_only_fields = ('__all__',)
 
     def get_is_subscribed(self, obj):
         request = self.context.get('request')
