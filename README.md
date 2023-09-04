@@ -79,7 +79,3 @@ docker compose exec backend python manage.py load_ingredients
 Проект работает локально!
 
 Автор: Ермеев Павел https://github.com/bytplokhim
-
-Данные для проверки:
-https://foodgr.duckdns.org
-admin@ya.ru check123
